@@ -1,2 +1,2 @@
-# metaApiRequest
-The lightweight simple web api request library based on minimal configuration, small and easy to use objects, meta programming
+# api-request
+The lightweight and simple web api request library based on minimal configuration and json-schemas.
