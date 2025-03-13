@@ -1,0 +1,20 @@
+{
+  "name": "api-request",
+  "version": "1.0.0",
+  "description": "A web requests fetching json-schemas based tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyNameIsNeXTSTEP/api-request.git"
+  },
+  "author": "gadzhievislam20@gmail.com",
+  "maintainers": ["Gadhizev Islam"],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MyNameIsNeXTSTEP/api-request/issues"
+  },
+  "homepage": "https://github.com/MyNameIsNeXTSTEP/api-request#readme"
+}
