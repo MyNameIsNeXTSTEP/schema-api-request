@@ -11,10 +11,18 @@
     "url": "git+https://github.com/MyNameIsNeXTSTEP/api-request.git"
   },
   "author": "gadzhievislam20@gmail.com",
-  "maintainers": ["Gadhizev Islam"],
+  "maintainers": [
+    "Gadhizev Islam"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MyNameIsNeXTSTEP/api-request/issues"
   },
-  "homepage": "https://github.com/MyNameIsNeXTSTEP/api-request#readme"
+  "homepage": "https://github.com/MyNameIsNeXTSTEP/api-request#readme",
+  "dependencies": {
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10"
+  }
 }
