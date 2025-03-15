@@ -46,7 +46,7 @@ The lightweight and simple web api request library based on minimal configuratio
 
 Calling directly the request:
 ```JavaScript
-import ApiRequest from 'api-request';
+import ApiRequest from 'schema-api-request';
 import testReqSchema from './schemas/1.schema.json' assert { type: 'json' };
 
 const response = await new ApiRequest(testReqSchema).request();
@@ -59,7 +59,7 @@ console.log(data);
 
 Save and move the request object further:
 ```JavaScript
-import ApiRequest from 'api-request';
+import ApiRequest from 'schema-api-request';
 import testReqSchema from './schemas/1.schema.json' assert { type: 'json' };
 
 const requestObj = new ApiRequest(testReqSchema);
