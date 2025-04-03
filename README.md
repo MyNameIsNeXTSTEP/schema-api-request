@@ -1,3 +1,5 @@
+![Tests](https://github.com/MyNameIsNeXTSTEP/VeilObjects/actions/workflows/test.yml/badge.svg?branch=master)
+
 # Api-request
 The lightweight and simple web api request library based on minimal configuration and json-schemas.
 

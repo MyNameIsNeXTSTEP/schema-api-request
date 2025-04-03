@@ -39,8 +39,8 @@ export type TRouteSchema = {
   method: string,
   url: string,
   schema: {
-    tags: string[],
-    description: string,
+    tags?: string[],
+    description?: string,
     summary?: string,
     requestConfig: TSchemaRequestConfig,
     querystring?: TBasicSchema,
