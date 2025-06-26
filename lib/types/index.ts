@@ -33,6 +33,7 @@ export type TSchemaRequestConfig = {
 export type TRequestPayload = {
   body?: BodyInit,
   params?: Record<string, string | number | boolean>,
+  queryString?: string,
 }
 
 export type TRouteSchema = {
