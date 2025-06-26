@@ -50,10 +50,11 @@ class ApiRequest {
   }
 
   prepareRequestConfig(routeSchema: TRouteSchema, requestPayload?: TRequestPayload){
-    let body, params;
+    let body, params, queryString;
     if (requestPayload) {
       body = requestPayload.body;
       params = requestPayload.params;
+      queryString = requestPayload.queryString;
     }
     const { method, url, schema: { requestConfig } } = routeSchema;
     const { headers, withAuth = false, authHeaders } = requestConfig;
@@ -62,7 +63,7 @@ class ApiRequest {
       params,
       method,
       baseURL: requestConfig.baseURL,
-      url,
+      url: url + queryString,
       headers: headers ?? { 'Content-Type': 'application/json' },
     };
     if (withAuth && authHeaders) {
