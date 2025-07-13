@@ -17,14 +17,14 @@ const isProd = process.env.NODE_ENV === 'production';
  * });
 */
 class ApiRequest {
-  private _baseUrl: string;
+  private _baseUrl?: string;
   private _routeSchema: TRouteSchema;
   private _authToken?: string;
 
   constructor(
-    baseUrl: string,
     routeSchema: TRouteSchema,
-    authToken?: string
+    authToken?: string,
+    baseUrl?: string,
   ) {
     this._routeSchema = routeSchema;
     this._authToken = authToken;
