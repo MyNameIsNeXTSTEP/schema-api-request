@@ -1,6 +1,6 @@
 {
   "name": "schema-api-request",
-  "version": "0.1.3",
+  "version": "1.0.1",
   "description": "A web requests fetching json-schemas based tool",
   "main": "index.js",
   "scripts": {
