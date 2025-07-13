@@ -17,15 +17,18 @@ const isProd = process.env.NODE_ENV === 'production';
  * });
 */
 class ApiRequest {
+  private _baseUrl: string;
   private _routeSchema: TRouteSchema;
   private _authToken?: string;
 
   constructor(
+    baseUrl: string,
     routeSchema: TRouteSchema,
     authToken?: string
   ) {
     this._routeSchema = routeSchema;
     this._authToken = authToken;
+    this._baseUrl = baseUrl;
   };
 
   /**
@@ -37,7 +40,8 @@ class ApiRequest {
     try {
       const requestConfig = this.prepareRequestConfig(this._routeSchema, requestPayload);
       const { baseURL, url, ...rest } = requestConfig;
-      return await fetch(baseURL + url, rest);
+      const fetchUrl = this._baseUrl ?? baseURL;
+      return await fetch(fetchUrl + url, rest);
     }
     catch (err) {
       throw new Error(
