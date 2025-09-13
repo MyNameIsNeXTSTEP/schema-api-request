@@ -1,9 +1,12 @@
 {
   "name": "schema-api-request",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A web requests fetching json-schemas based tool",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "test": "./node_modules/mocha/bin/mocha.js tests/test-runner.js --reporter json --reporter-option output=tests-results.json"
   },
   "repository": {
@@ -16,18 +19,31 @@
   ],
   "license": "MIT",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./lib": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
   "bugs": {
     "url": "https://github.com/MyNameIsNeXTSTEP/api-request/issues"
   },
   "homepage": "https://github.com/MyNameIsNeXTSTEP/api-request#readme",
-  "dependencies": {
-    "typescript": "^5.8.2"
-  },
   "devDependencies": {
     "@types/node": "^22.13.10",
     "@types/sinon": "^17.0.4",
     "mocha": "^11.1.0",
     "sinon": "^19.0.4",
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
   }
 }
