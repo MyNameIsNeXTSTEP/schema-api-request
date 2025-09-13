@@ -1,0 +1,85 @@
+import { EApiRequestMethods } from './types/index.js';
+const isProd = process.env.NODE_ENV === 'production';
+/**
+ * @Usage
+ * ```
+ * import someRouteSchema;
+ * const response = await new ApiRequest(someRouteSchema).request<TypeForPayload>({
+ *   body: (POST | PUT | DELETE) request payload data // or
+ *   params: (GET) request params
+ * });
+*/
+class ApiRequest {
+    _baseUrl;
+    _routeSchema;
+    _authToken;
+    constructor(routeSchema, authToken, baseUrl) {
+        this._routeSchema = routeSchema;
+        this._authToken = authToken;
+        this._baseUrl = baseUrl;
+    }
+    ;
+    /**
+     * @todo
+     * Need proper typings and consider all the possible fetch Response types (typing issue with generic <T>),
+     * see at https://developer.mozilla.org/en-US/docs/Web/API/Response/type -> instance methods
+     */
+    async request(requestPayload) {
+        try {
+            const requestConfig = this.prepareRequestConfig(this._routeSchema, requestPayload);
+            const { baseURL, url, ...rest } = requestConfig;
+            const fetchUrl = this._baseUrl ?? baseURL;
+            return await fetch(fetchUrl + url, rest);
+        }
+        catch (err) {
+            throw new Error('ApiRequest error', {
+                cause: { err },
+            });
+        }
+        ;
+    }
+    prepareRequestConfig(routeSchema, requestPayload) {
+        let body, params, queryString;
+        if (requestPayload) {
+            body = requestPayload.body;
+            params = requestPayload.params;
+            queryString = requestPayload.queryString;
+        }
+        const { method, url, schema: { requestConfig } } = routeSchema;
+        const { headers, withAuth = false, authHeaders } = requestConfig;
+        const config = {
+            body,
+            params,
+            method,
+            baseURL: requestConfig.baseURL,
+            url: url + queryString,
+            headers: headers ?? { 'Content-Type': 'application/json' },
+        };
+        if (withAuth && authHeaders) {
+            const auth = this.auth(authHeaders);
+            if (auth) {
+                config.headers = {
+                    ...config.headers,
+                    ...auth,
+                };
+            }
+        }
+        const isModifyingRequest = (method === EApiRequestMethods.POST || method === EApiRequestMethods.PUT);
+        if (isModifyingRequest && body) {
+            config.body = body;
+        }
+        return config;
+    }
+    ;
+    auth(authHeaders) {
+        if (this._authToken) {
+            const { type, header } = authHeaders;
+            return {
+                [header]: type + this._authToken,
+            };
+        }
+    }
+    ;
+}
+;
+export default ApiRequest;

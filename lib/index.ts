@@ -3,7 +3,7 @@ import {
   type TRouteSchema,
   type TRequestPayload,
   type THeaders, TAuthHeaders
-} from './types';
+} from './types/index.js';
 
 const isProd = process.env.NODE_ENV === 'production';
 
