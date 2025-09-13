@@ -43,7 +43,7 @@ class ApiRequest {
         if (requestPayload) {
             body = requestPayload.body;
             params = requestPayload.params;
-            queryString = requestPayload.queryString;
+            queryString = requestPayload.queryString ?? '';
         }
         const { method, url, schema: { requestConfig } } = routeSchema;
         const { headers, withAuth = false, authHeaders } = requestConfig;
