@@ -43,10 +43,14 @@ export type TRouteSchema = {
     tags?: string[],
     description?: string,
     summary?: string,
-    requestConfig: TSchemaRequestConfig,
-    querystring?: TBasicSchema,
-    response?: Record<string, TDataSchema>,
-    body?: Record<string, TDataSchema>,
+    type?: string;
+    properties?: Record<string, object>;
+    required?: string[];
+    additionalProperties?: boolean;
+    requestConfig: TSchemaRequestConfig;
+    querystring?: TBasicSchema;
+    response?: Record<string, TDataSchema>;
+    body?: Record<string, TDataSchema>;
   },
 }
 
