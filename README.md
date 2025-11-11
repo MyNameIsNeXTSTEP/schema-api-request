@@ -3,6 +3,11 @@
 # Api-request
 The lightweight and simple web api request library based on minimal configuration and json-schemas.
 
+Available at [npm](https://www.npmjs.com/package/schema-api-request), current stable version - [1.0.6](https://www.npmjs.com/package/schema-api-request/v/1.0.6)
+
+<img width="1280" height="980" alt="image" src="https://github.com/user-attachments/assets/9e9f2d0e-71aa-4131-bcf1-5707370be2c1" /> (11.11.25 screenshot)
+
+
 ## Objectives
 
 1. **Standartized approach** accross all API touching code by a [JSONSchema protocol](https://json-schema.org/)
